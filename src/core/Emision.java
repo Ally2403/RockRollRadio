@@ -25,6 +25,7 @@ public class Emision {
         this.programa = programa;
         
         Emision.serialCount++;
+        this.programa.addEmision(this);
     }
 
     public ArrayList<Cancion> getCanciones() {

@@ -98,14 +98,8 @@ public class RockRollRadio {
         }
     }
     
-    public void addEmision(Emision emision){
-        for(Programa programa : this.programas){
-            if(emision.getPrograma() == programa){
-                if(!programa.getEmisiones().contains(emision)){
-                    programa.getEmisiones().add(emision);
-                }
-            }
-        }
+    public boolean addEmision(Emision emision){
+        return true;
     }
     
     public void addInvitado(Invitado invitado, Emision emision){

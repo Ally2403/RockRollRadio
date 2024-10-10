@@ -28,6 +28,12 @@ public class Programa {
         this.locutores.add(locutor);
         this.locutores.get(0).addPrograma(this);
     }
+    
+    public void addEmision(Emision emision){
+        if(!this.emisiones.contains(emision)){
+            this.emisiones.add(emision);
+        }
+    }
 
     public ArrayList<Emision> getEmisiones() {
         return emisiones;
