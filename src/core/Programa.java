@@ -16,16 +16,17 @@ public class Programa {
     private static int serialCount = 0;
     private int serial;
     private ArrayList<Emision> emisiones;
-    private Locutor locutor;
+    private ArrayList<Locutor> locutores;
 
     public Programa(String nombre, Locutor locutor) {
         this.nombre = nombre;
         this.serial = Programa.serialCount;
         this.emisiones = new ArrayList<>();
-        this.locutor = locutor;
+        this.locutores = new ArrayList<>();
         
         Programa.serialCount++;
-        this.locutor.addPrograma(this);
+        this.locutores.add(locutor);
+        this.locutores.get(0).addPrograma(this);
     }
 
     public ArrayList<Emision> getEmisiones() {
