@@ -8,6 +8,9 @@ import core.persona.Artista;
 import core.persona.Invitado;
 import core.persona.Locutor;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  *
@@ -26,6 +29,29 @@ public class RockRollRadio {
         this.invitados = new ArrayList<>();
         this.locutores = new ArrayList<>();
         this.programas = new ArrayList<>();
+    }
+    
+    public Programa getProgramaConMasCancionesDeArtistaHashMap(Artista artista){
+        Map<Programa, Integer> counts = new LinkedHashMap<>();
+        for(Programa programa : this.programas){
+            counts.put(programa, 0);
+        }
+        for(Programa programa : this.programas){
+            for(Emision emision : programa.getEmisiones()){
+                for(Cancion cancion : emision.getCanciones()){
+                    if(cancion.getArtista() == artista){
+                        counts.put(programa, counts.get(programa) + 1);
+                    }
+                }
+            }
+        }
+        int maxValue = Collections.max(counts.values());
+        for (Programa programa : counts.keySet()) {
+            if(counts.get(programa) == maxValue){
+                return programa;
+            }
+        }
+        return null;
     }
     
     public Programa getProgramaConMasCancionesDeArtista(Artista artista){
